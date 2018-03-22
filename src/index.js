@@ -83,8 +83,24 @@ const Info = () => (
 	<section id='info'>
 		<div className='container' id='info-container'>
 			<div className='row justify-content-end'>
-				<div className='col-12 col-sm-9 col-md-6'>
+				<div className='col-12 col-sm-10 col-md-8'>
 					<h1 className='hi'>Hi!</h1>
+					<p className='info-text'>
+						We're the Moonlight Swing Orchestra, a group of musicians, insrumentalists,
+						vocalists, professionals, and talented ameturs, who all share the same love
+						of performing big band swing music
+					</p>
+					<p className='info-text'>
+						Hear the great sounds of
+						<strong>Jack Dorsy</strong>,
+						<strong>Glen Miller</strong>,
+						<strong>Duke Ellington</strong>,
+						<strong>Artie Shaw</strong>, 
+						and more! (we even admit to throwing in an occasional modern hit as well!)
+					</p>
+				</div>
+				<div className='col-12 mt-5 d-flex justify-content-center'>
+					<Button className='intro-button' color='secondary'>Meet the band</Button>
 				</div>
 			</div>
 		</div>
