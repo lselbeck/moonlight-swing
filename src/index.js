@@ -1,47 +1,43 @@
-import React from 'react'
+import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import {BrowserRouter as Router, Route} from 'react-router-dom'
+import registerServiceWorker from './registerServiceWorker'
+import Scroll, { Link } from 'react-scroll'
+
 import 'bootstrap/dist/css/bootstrap.css'
 import './index.css'
-import registerServiceWorker from './registerServiceWorker'
 
-import Home from './pages/Home/Home'
-import Music from './pages/Music/Music'
+import CapsuleButton from './components/CapsuleButton/CapsuleButton'
 import Members from './pages/Members/Members'
-import Events from './pages/Events/Events'
-import Header from './components/Header/Header'
-import Footer from './components/Footer/Footer'
 
-import wholeBand from './pics/whole-band.jpg'
-
+import WholeBand from './pics/whole-band.jpg'
 import FaPlayCircle from 'react-icons/lib/fa/play-circle'
-import {Button} from 'reactstrap'
 
-var routes = [
-	{
-		path: '/',
-		component: Home
-	},
-	{
-		path: '/music',
-		component: Music
-	},
-	{
-		path: '/members',
-		component: Members
-	},	
-	{
-		path: '/events',
-		component: Events
-	}
-]
+// var routes = [
+// 	{
+// 		path: '/',
+// 		component: Home
+// 	},
+// 	{
+// 		path: '/music',
+// 		component: Music
+// 	},
+// 	{
+// 		path: '/members',
+// 		component: Members
+// 	},	
+// 	{
+// 		path: '/events',
+// 		component: Events
+// 	}
+// ]
 
 const Landing = () => (
 	<section id='landing'>
 		<div className='container-fluid' id='landing-container'>
 			<div className='row justify-content-center'>
 				<div className='col-9 col-md-4 order-2 order-md-1'>
-					<img className='whole-band img-fluid rounded-circle' src={wholeBand} alt='Whole Band'></img>
+					<img className='whole-band img-fluid rounded-circle' src={WholeBand} alt='Whole Band'></img>
 				</div>
 				<div className='col-12 col-md-8 order-1 order-md-2'>
 					<div className='row align-items-center'>
@@ -69,51 +65,68 @@ const Intro = () => (
 			</div>
 			<div className='row justify-content-center align-items-center mt-4'>
 				<div className='col-6 col-md-4 d-flex justify-content-center'>
-					<Button className='intro-button' color='secondary'>Learn More</Button>
+					<CapsuleButton className='intro-button' color='secondary' to='info'>Learn More</CapsuleButton>
 				</div>
 				<div className='col-6 col-md-4 d-flex justify-content-center'>
-					<Button className='intro-button' color='secondary'>Book Now</Button>
+					<CapsuleButton className='intro-button' color='secondary'>Book Now</CapsuleButton>
 				</div>
 			</div>
 		</div>
 	</section>
 )
 
-const Info = () => (
-	<section id='info'>
-		<div className='container' id='info-container'>
-			<div className='row justify-content-end'>
-				<div className='col-12 col-sm-10 col-md-8'>
-					<h1 className='hi'>Hi!</h1>
-					<p className='info-text'>
-						We're the Moonlight Swing Orchestra, a group of musicians, insrumentalists,
-						vocalists, professionals, and talented ameturs, who all share the same love
-						of performing big band swing music
-					</p>
-					<p className='info-text'>
-						Hear the great sounds of
-						<strong>Jack Dorsy</strong>,
-						<strong>Glen Miller</strong>,
-						<strong>Duke Ellington</strong>,
-						<strong>Artie Shaw</strong>, 
-						and more! (we even admit to throwing in an occasional modern hit as well!)
-					</p>
-				</div>
-				<div className='col-12 mt-5 d-flex justify-content-center'>
-					<Button className='intro-button' color='secondary'>Meet the band</Button>
-				</div>
-			</div>
-		</div>
-	</section>
-)
+class Info extends Component {
+	constructor(props) {
+		super(props)
+	}
 
-const App = () => (
-	<div>
-		<Landing/>
-		<Intro/>
-		<Info/>
-	</div>
-)
+	render() {
+		return (
+			<section id='info'>
+				<div className='container d-flex align-items-center' id='info-container'>
+					<div className='row justify-content-end'>
+						<div className='col-12 col-lg-10 col-xl-9'>
+							<h1 className='hi mb-4'>Hi!</h1>
+							<p className='info-text'>
+								We're the Moonlight Swing Orchestra, a group of musicians, insrumentalists,
+								vocalists, professionals, and talented ameturs, who all share the same love
+								of performing big band swing music
+							</p>
+							<p className='info-text'>
+								Hear the great sounds of 
+								<strong> Jack Dorsy</strong>,
+								<strong> Glen Miller</strong>,
+								<strong> Duke Ellington</strong>,
+								<strong> Artie Shaw</strong>, 
+								and more. We even admit to throwing in an occasional modern hit as well! 
+							</p>
+						</div>
+						<div className='col-12 mt-5 d-flex justify-content-center'>
+							<CapsuleButton className='intro-button' color='secondary' to='members'>Meet the band</CapsuleButton>
+						</div>
+					</div>
+				</div>
+			</section>
+		)
+	}
+}
+
+class App extends Component {
+  constructor(props) {
+  	super(props)
+  }
+
+  render() {
+    return (
+			<div>
+				<Landing/>
+				<Intro/>
+				<Info/>
+				<Members/>
+			</div>
+    );
+  }
+}
 
 ReactDOM.render(<App/>, document.getElementById('root'))
 

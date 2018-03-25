@@ -43,10 +43,35 @@
 	src: url('./fonts/happy-campers-nf/HappyCampersNF.otf') format('opentype');
 }
 
+@font-face {
+	font-family: 'Semplicita Medium';
+	src: url('./fonts/semplicita/Semplicita Medium.otf') format('opentype');
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: 'Semplicita';
+	src: url('./fonts/semplicita/Semplicita Bold.otf') format('opentype');
+	font-weight: bold;
+}
+
+
+@font-face {
+	font-family: 'Semplicita Light';
+	src: url('./fonts/semplicita/Semplicita Light.otf') format('opentype');
+	font-weight: normal;
+}
+
+
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Happy Campers', Times, serif;
+  font-family: 'Semplicita Light', Arial, Helvetica, sans-serif;
+	font-size: 1.6rem;
+}
+
+hr {
+	border-top: 2px solid rgba(0, 0, 0, 0.4);
 }
 
 /******* LANDING SECTION *******/
@@ -64,14 +89,14 @@ body {
 }
 
 .title-moonlight {
-	font-family: 'Chi Town';
+	font-family: 'Chi Town', Arial, Helvetica, sans-serif;
 	font-size: 13vw;
 	margin-bottom: 0;
 	height: 9vw;
 }
 
 .title-swing-orchestra {
-	font-family: 'Jey';
+	font-family: 'Jey', Verdana, Geneva, sans-serif;
 	font-size: 9vw;
 }
 
@@ -118,8 +143,8 @@ body {
 }
 
 .intro-button {
-	border-radius: 23%/50%;
 	font-size: 1.6rem;
+	font-family: 'Semplicita Medium', Arial, Helvetica, sans-serif;
 }
 
 /******* INFO SECTION *******/
@@ -145,12 +170,13 @@ body {
 
 #info-container {
 	min-height: 100vh;
-	padding-top: 7vh;
-	padding-bottom: 5vh;
+	padding-top: 10vh;
+	padding-bottom: 10vh
 }
 
 .hi {
-	font-size: 9vw;
+	font-size: 8rem;
+	font-family: 'Semplicita Medium', Arial, Helvetica, sans-serif;
 }
 
 .info-text {
@@ -171,3 +197,71 @@ body {
 	}
 }
 
+
+/******* MEMBERS SECTION *******/
+
+#members {
+	position:relative;
+}
+
+#members::after {
+	background-image: url('./pics/music-notes.jpg');
+	background-size: cover;
+	background-position: 50% 0%;
+	background-repeat: no-repeat;
+	content:'';
+	position: absolute;
+	top:0px;
+	left: 0px;
+	width:100%;
+	height:100%;
+	z-index:-1;
+	opacity: 0.07; /* Here is your opacity */
+}
+
+#members-container {
+	padding-top: 10vh;
+	padding-bottom: 10vh;
+}
+
+.sectional-title {
+	font-family: 'Chi Town', Arial, Helvetica, sans-serif;
+}
+
+.members-text {
+	font-size: 2.2rem;
+}
+
+.first-word {
+	font-size: 8rem;
+	font-family: 'Chi Town', Arial, Helvetica, sans-serif;
+	line-height: 1.6rem;
+}
+
+.whole-band-row {
+	padding-bottom: 5vh;
+}
+
+.mark-kunz-row {
+	padding-top: 12vh;
+	padding-bottom: 10vh;
+}
+
+.inline-music-link {
+	border-bottom: 2px solid rgba(0,0,0,0.7);
+	cursor:pointer;
+}
+
+.inline-music-link:hover {
+	background: lightgrey;
+}
+
+.vocalists-title {
+	font-family: 'Chi Town', Arial, Helvetica, sans-serif;
+	font-size: 4.5rem;
+	text-align: center
+}
+
+.vocalists-row {
+	padding-top: 10vh;
+}
