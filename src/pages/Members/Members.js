@@ -29,7 +29,7 @@ export default class Members extends Component {
 						'Tina Toburen',
 						'Barbara Hubers-Drake',
 						'Beth Gott',
-						'Lisa Vallinsdddddddd'
+						'Lisa Vallins'
 					]
 				},
 				{

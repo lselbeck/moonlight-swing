@@ -101,7 +101,7 @@ hr {
 }
 
 .play-button {
-	font-size: 9vw;
+	font-size: 7vw;
 	border-radius: 50%;
 }
 
@@ -250,6 +250,7 @@ hr {
 .inline-music-link {
 	border-bottom: 2px solid rgba(0,0,0,0.7);
 	cursor:pointer;
+	background: rgba(0,0,0,0.1);
 }
 
 .inline-music-link:hover {

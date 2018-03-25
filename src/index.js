@@ -89,7 +89,7 @@ class Info extends Component {
 							<h1 className='hi mb-4'>Hi!</h1>
 							<p className='info-text'>
 								We're the Moonlight Swing Orchestra, a group of musicians, insrumentalists,
-								vocalists, professionals, and talented ameturs, who all share the same love
+								vocalists, professionals, and talented amateurs, who all share the same love
 								of performing big band swing music
 							</p>
 							<p className='info-text'>
