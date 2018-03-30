@@ -108,7 +108,7 @@ export default class Members extends Component {
 							<img src={MarkKunz} alt='Mark Kunz' className='img-fluid rounded mx-auto d-block' />
 						</div>
 						<div className='col-12 col-md-7 col-lg-8'>
-							<p className='members-text'>
+							<p className='members-text mt-4'>
 								<span className='first-word'>M</span>eet Mark Kunz, the leader of the band.  Born and raised in the Seattle area,
 								Mark started his musical career as a saxaphone player in the US Army where he played across
 								America.  He joined Moonlight Swing Orchestra in 1980, becoming the leader of the group in 2005.

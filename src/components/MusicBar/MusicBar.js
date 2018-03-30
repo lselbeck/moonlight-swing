@@ -6,13 +6,15 @@ export default class MusicBar extends React.Component {
 		super(props)
 	}
 
+	nextSong
+
 	render() {
 		return (
 			<section id='music-bar'>
 				<div className='container' id='music-bar-container'>
 					<div className='row'>
 						<div className='col-12'>
-							<Sound {...this.props}/>
+							<Sound {...this.props.player} onFinishedPlaying={this.props.playerControls.nextSong}/>
 						</div>
 					</div>
 				</div>

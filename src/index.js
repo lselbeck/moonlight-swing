@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom'
 import {BrowserRouter as Router, Route} from 'react-router-dom'
 import registerServiceWorker from './registerServiceWorker'
 import Scroll, { Link } from 'react-scroll'
-import { Tooltip } from 'reactstrap'
 import Sound from 'react-sound'
 import update from 'immutability-helper';
 
@@ -13,11 +12,11 @@ import './index.css'
 import ButtonLink from './components/ButtonLink/ButtonLink'
 import Members from './pages/Members/Members'
 import MusicBar from './components/MusicBar/MusicBar'
+import Landing from './pages/Landing/Landing'
 
-import WholeBand from './pics/whole-band.jpg'
-import FaPlayCircle from 'react-icons/lib/fa/play-circle'
 
 import InTheMood from './music/in-the-mood.mp3'
+import OrangeColoredSky from './music/orange-colored-sky.mp3'
 
 // var routes = [
 // 	{
@@ -37,52 +36,6 @@ import InTheMood from './music/in-the-mood.mp3'
 // 		component: Events
 // 	}
 // ]
-
-class Landing extends Component {
-	constructor(props) {
-		super(props)
-
-		this.state = {
-			popoverOpen: false
-		}
-
-		this.toggle = this.toggle.bind(this)
-	}
-
-	toggle() {
-		this.setState({
-			popoverOpen: !this.state.popoverOpen
-		})
-	}
-
-	render() {
-		return (
-			<section id='landing'>
-				<div className='container-fluid' id='landing-container'>
-					<div className='row justify-content-center'>
-						<div className='col-9 col-md-4 order-2 order-md-1'>
-							<img className='whole-band img-fluid rounded-circle' src={WholeBand} alt='Whole Band'></img>
-						</div>
-						<div className='col-12 col-md-8 order-1 order-md-2'>
-							<div className='row align-items-center'>
-								<h1 className='col-12 title-moonlight'>Moonlight</h1>
-								<div className='col-8'>
-									<span className='title-swing-orchestra'>Swing Orchestra</span>
-								</div>
-								<div className='col-4'>
-									<FaPlayCircle id='play-button' onClick={this.props.playerControls.toggleMusic} onMouseEnter={this.showPopover} onMouseLeave={this.hidePopover}/>
-									<Tooltip placement='bottom' isOpen={this.state.popoverOpen} target='play-button' toggle={this.toggle} autohide={false}>
-										Take a listen!
-									</Tooltip>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-		)
-	}
-}
 
 const Intro = () => (
 	<section id='intro'>
@@ -112,17 +65,19 @@ class Info extends Component {
 	render() {
 		return (
 			<section id='info'>
-				<div className='container d-flex align-items-center' id='info-container'>
-					<div className='row justify-content-end'>
+				<div className='container' id='info-container'>
+					<div className='row justify-content-end '>
 						<div className='col-12 col-lg-10 col-xl-9'>
 							<h1 className='hi'>Hi!</h1>
 							<p className='info-text'>
 								We're the Moonlight Swing Orchestra, a group of musicians, insrumentalists,
-								vocalists, professionals, and talented amateurs, who all share the same love
-								of performing big band swing music
+								vocalists, and professionals who all share the same love
+								of performing big band swing music.
 							</p>
 							<p className='info-text'>
-								Hear the great sounds of 
+								We play for you for whatever the occasion: dances, receptions, fund raisers, private parties,
+								and any other event that calls for great live music.</p>
+								<p>Hear the great sounds of 
 								<strong> Jack Dorsy</strong>,
 								<strong> Glen Miller</strong>,
 								<strong> Duke Ellington</strong>,
@@ -130,8 +85,13 @@ class Info extends Component {
 								and more. We even admit to throwing in an occasional modern hit as well! 
 							</p>
 						</div>
-						<div className='col-12 mt-5 d-flex justify-content-center'>
-							<ButtonLink className='intro-button' color='secondary' to='members'>Meet the band</ButtonLink>
+					</div>
+					<div className='row justify-content-center align-items-center mt-4'>
+						<div className='col-6 col-md-4 d-flex justify-content-center'>
+							<ButtonLink className='intro-button' color='secondary' to='members'>Meet the Band</ButtonLink>
+						</div>
+						<div className='col-6 col-md-4 d-flex justify-content-center'>
+							<ButtonLink className='intro-button' color='secondary'>Book Now!</ButtonLink>
 						</div>
 					</div>
 				</div>
@@ -147,6 +107,7 @@ class App extends Component {
 		this.pauseMusic = this.pauseMusic.bind(this)
 		this.stopMusic = this.stopMusic.bind(this)
 		this.toggleMusic = this.toggleMusic.bind(this)
+		this.nextSong = this.nextSong.bind(this)
 
 		this.state = {
 			player: {
@@ -158,7 +119,19 @@ class App extends Component {
 				pauseMusic: this.pauseMusic,
 				stopMusic: this.stopMusic,
 				toggleMusic: this.toggleMusic,
+				nextSong: this.nextSong,
 			},
+			songs: [
+				{
+					title: 'In the Mood',
+					url: InTheMood,
+				},
+				{
+					title: 'Orange Colored Sky',
+					url: OrangeColoredSky,
+				},
+			],
+			currentSong: 0,
 		}
 	}
 
@@ -187,9 +160,26 @@ class App extends Component {
 	}
 
 	toggleMusic() {
-		this.setState((prev, props) => ({
-			player: update(prev.player, {playStatus: {$set: prev.player.playStatus == Sound.status.STOPPED ? Sound.status.PLAYING : Sound.status.STOPPED}})
-		}))
+		let newState = update(this.state, {
+			player: {
+				playStatus: {$set: this.state.player.playStatus == Sound.status.STOPPED ? Sound.status.PLAYING : Sound.status.STOPPED}
+			},
+		})
+
+		this.setState(newState)
+	}
+
+	nextSong() {
+		let nextSongIndex = (this.state.currentSong+1) % this.state.songs.length
+
+		let newState = update(this.state, {
+			player: {
+				url: {$set: this.state.songs[nextSongIndex].url},
+			},
+			currentSong: {$set: nextSongIndex},
+		})
+
+		this.setState(newState)
 	}
 
 	render() {
@@ -199,7 +189,7 @@ class App extends Component {
 				<Intro/>
 				<Info/>
 				<Members/>
-				<MusicBar {...this.state.player}/>
+				<MusicBar player={this.state.player} playerControls={this.state.playerControls}/>
 			</div>
 		);
 	}
