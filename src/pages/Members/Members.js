@@ -11,7 +11,7 @@ import Trombones from '../../pics/trombones.jpg'
 import Rhythm from '../../pics/rhythm.jpg'
 import RobinHilt from '../../pics/robin-hilt.jpg'
 import KirbyTaylor from '../../pics/kirby-taylor.jpg'
-import Placeholder from '../../pics/placeholder.jpeg'
+import Placeholder from '../../pics/placeholder.jpg'
 
 
 export default class Members extends Component {
@@ -97,18 +97,17 @@ export default class Members extends Component {
 				<div className='container' id='members-container'>
 					<div className='row whole-band-row'>
 						<div className='col-12'>
-							<img src={WholeBandNarrow} alt='Whole band' className='w-100 rounded mb-5' />
-							<p className='info-text'>
+							<img src={WholeBandNarrow} alt='Whole band' className='w-100 rounded mb-2' />
+							<p className='caption-text text-center'>
 								We are 17 members strong with over <strong>250 years</strong> of cumulative experience!
 							</p>
 						</div>
 					</div>
-					<hr/>
 					<div className='row mark-kunz-row'>
-						<div className='col-12 col-lg-3 mb-5 mb-lg-0'>
+						<div className='col-12 col-md-5 col-lg-4 mb-4'>
 							<img src={MarkKunz} alt='Mark Kunz' className='img-fluid rounded mx-auto d-block' />
 						</div>
-						<div className='col-12 col-lg-9'>
+						<div className='col-12 col-md-7 col-lg-8'>
 							<p className='members-text'>
 								<span className='first-word'>M</span>eet Mark Kunz, the leader of the band.  Born and raised in the Seattle area,
 								Mark started his musical career as a saxaphone player in the US Army where he played across

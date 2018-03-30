@@ -63,15 +63,21 @@
 }
 
 
-body {
+html>body {
   margin: 0;
   padding: 0;
-  font-family: 'Semplicita Light', Arial, Helvetica, sans-serif;
+  font-family: 'Semplicita Light' !important;
 	font-size: 1.6rem;
 }
 
 hr {
 	border-top: 2px solid rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 991px) {
+	body {
+		font-size: 1.4rem;
+	}
 }
 
 /******* LANDING SECTION *******/
@@ -83,7 +89,7 @@ hr {
 }
 
 #landing-container {
-	min-height: 100vh;
+	min-height: 80vh;
 	padding-top: 20vh;
 	padding-bottom: 10vh;
 }
@@ -100,16 +106,28 @@ hr {
 	font-size: 9vw;
 }
 
-.play-button {
+#play-button {
 	font-size: 7vw;
 	border-radius: 50%;
 }
 
-.play-button:hover {
+#play-button:hover {
 	cursor: pointer;
     -webkit-filter: drop-shadow( 0px 0px 20px #fff ); 
             filter: drop-shadow( 0px 0px 20px #fff );
+}
 
+.tooltip-inner {
+	border-radius: 200px;
+	background-color: white;
+	color: rgba(0,0,0,.8);
+  font-family: 'Semplicita Medium', Arial, Helvetica, sans-serif;
+	font-size: 1.5rem;
+	padding: 0.6rem 1.2rem;
+}
+
+.tooltip>.arrow::before {
+	border-bottom-color: white !important;
 }
 
 /* FOR XS AND SM SCREENS */
@@ -125,7 +143,7 @@ hr {
 		padding-left: 8vw;
 	}
 
-	.play-button {
+	#play-button {
 		font-size: 12vw;
 	}
 }
@@ -143,8 +161,9 @@ hr {
 }
 
 .intro-button {
-	font-size: 1.6rem;
+	font-size: 1.5rem;
 	font-family: 'Semplicita Medium', Arial, Helvetica, sans-serif;
+	padding: 0.5rem 1rem;
 }
 
 /******* INFO SECTION *******/
@@ -169,18 +188,14 @@ hr {
 }
 
 #info-container {
-	min-height: 100vh;
-	padding-top: 10vh;
-	padding-bottom: 10vh
+	min-height: 80vh;
+	padding-top: 7vh;
+	padding-bottom: 7vh
 }
 
 .hi {
 	font-size: 8rem;
 	font-family: 'Semplicita Medium', Arial, Helvetica, sans-serif;
-}
-
-.info-text {
-	font-size: 2.3rem;
 }
 
 @media (max-width: 991px) {
@@ -228,23 +243,19 @@ hr {
 	font-family: 'Chi Town', Arial, Helvetica, sans-serif;
 }
 
-.members-text {
-	font-size: 2.2rem;
+.caption-text {
+	font-size: 1.3rem;
 }
 
 .first-word {
-	font-size: 8rem;
+	font-size: 6rem;
 	font-family: 'Chi Town', Arial, Helvetica, sans-serif;
 	line-height: 1.6rem;
 }
 
-.whole-band-row {
-	padding-bottom: 5vh;
-}
-
 .mark-kunz-row {
-	padding-top: 12vh;
-	padding-bottom: 10vh;
+	padding-top: 6vh;
+	padding-bottom: 6vh;
 }
 
 .inline-music-link {
@@ -259,10 +270,18 @@ hr {
 
 .vocalists-title {
 	font-family: 'Chi Town', Arial, Helvetica, sans-serif;
-	font-size: 4.5rem;
+	font-size: 3.5rem;
 	text-align: center
 }
 
 .vocalists-row {
-	padding-top: 10vh;
+	padding-top: 7vh;
+}
+
+/******* MUSIC PLAYER *******/
+.player-container {
+	position:fixed;
+	height: 200px;
+	width: 100%;
+	left:0;
 }

@@ -7,14 +7,14 @@ class BandSectional extends React.Component {
 
 	render() {
 		return (
-			<div className='row no-gutters'>
-				<div className='col-12 col-lg-6 pl-4 pt-5'>
-					<h1 className='sectional-title'>{this.props.title}</h1>
+			<div className='row no-gutters justify-content-center align-items-center mb-5 mb-md-0'>
+				<div className='col-12 col-md-6 col-xl-5 pl-4'>
+					<h2 className='sectional-title'>{this.props.title}</h2>
 					<div className='row'>
-						{this.props.names.map(name => <div className='col-6 border-left'>{name}</div>)}
+						{this.props.names.map(name => <div className='col-6 border-left member-names'>{name}</div>)}
 					</div>
 				</div>
-				<div className={`col-12 col-lg-6 ${this.props.imgFirst ? 'order-lg-first' : ''}`}>
+				<div className={`col-12 col-md-6 col-xl-5 ${this.props.imgFirst ? 'order-md-first' : ''}`}>
 					<img src={this.props.img} alt={this.props.title} className='w-100' />
 				</div>
 			</div>
