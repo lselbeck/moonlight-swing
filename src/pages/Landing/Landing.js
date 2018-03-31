@@ -1,24 +1,37 @@
 import React from 'react'
 import WholeBand from '../../pics/whole-band.jpg'
-import { Tooltip } from 'reactstrap'
-import PlayButton from '../../components/PlayButton/PlayButton'
+import MyIcon from '../../components/MyIcon/MyIcon'
+import MusicPlayer from '../../components/MusicPlayer/MusicPlayer'
+
+import InTheMood from '../../music/in-the-mood.mp3'
+import OrangeColoredSky from '../../music/orange-colored-sky.mp3'
+import AmericanPatrol from '../../music/american-patrol.mp3'
+import BeyondTheSea from '../../music/beyond-the-sea.mp3'
 
 export default class Landing extends React.Component {
 	constructor(props) {
 		super(props)
 
 		this.state = {
-			tooltipOpen: false,
-			playing: false,
+			songs: [
+				{
+					title: 'In the Mood',
+					url: InTheMood,
+				},
+				{
+					title: 'Orange Colored Sky',
+					url: OrangeColoredSky,
+				},
+				{
+					title: 'American Patrol',
+					url: AmericanPatrol,
+				},
+				{
+					title: 'Beyond the Sea',
+					url: BeyondTheSea,
+				},
+			]
 		}
-
-		this.toggleTooltip = this.toggleTooltip.bind(this)
-	}
-
-	toggleTooltip() {
-		this.setState({
-			tooltipOpen: !this.state.tooltipOpen
-		})
 	}
 
 	render() {
@@ -36,10 +49,7 @@ export default class Landing extends React.Component {
 									<span className='title-swing-orchestra'>Swing Orchestra</span>
 								</div>
 								<div className='col-4'>
-									<PlayButton id='play-button' playing={false} playerControls={this.props.playerControls}/>
-{/*									<Tooltip placement='bottom' isOpen={this.state.tooltipOpen} target='play-button' toggle={this.toggleTooltip} autohide={false}>
-										Take a listen!
-									</Tooltip>*/}
+									<MusicPlayer id='play-button' songs={this.state.songs}/>
 								</div>
 							</div>
 						</div>

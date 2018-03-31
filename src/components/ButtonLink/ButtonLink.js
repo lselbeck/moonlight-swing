@@ -1,6 +1,6 @@
 import React from 'react'
 import {Button} from 'reactstrap'
-import Scroll, { Link } from 'react-scroll'
+import ScrollLink from '../ScrollLink/ScrollLink'
 
 export default class ButtonLink extends React.Component {
 	constructor(props) {
@@ -9,11 +9,11 @@ export default class ButtonLink extends React.Component {
 
 	render() {
 		return (
-			<Link to={this.props.to} spy={true} smooth={true} duration={500}>
+			<ScrollLink to={this.props.to}>
 				<Button {...this.props} style={{borderRadius: 500}}>
 					{this.props.children}
 				</Button>
-			</Link>
+			</ScrollLink>
 		)
 	}
 }

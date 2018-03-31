@@ -11,12 +11,10 @@ import './index.css'
 
 import ButtonLink from './components/ButtonLink/ButtonLink'
 import Members from './pages/Members/Members'
-import MusicBar from './components/MusicBar/MusicBar'
 import Landing from './pages/Landing/Landing'
+import Music from './pages/Music/Music'
 
 
-import InTheMood from './music/in-the-mood.mp3'
-import OrangeColoredSky from './music/orange-colored-sky.mp3'
 
 // var routes = [
 // 	{
@@ -103,93 +101,21 @@ class Info extends Component {
 class App extends Component {
 	constructor(props) {
 		super(props)
-		this.playMusic = this.playMusic.bind(this)
-		this.pauseMusic = this.pauseMusic.bind(this)
-		this.stopMusic = this.stopMusic.bind(this)
-		this.toggleMusic = this.toggleMusic.bind(this)
-		this.nextSong = this.nextSong.bind(this)
 
-		this.state = {
-			player: {
-				url: InTheMood,
-				playStatus: Sound.status.STOPPED,
-			},
-			playerControls: {
-				playMusic: this.playMusic,
-				pauseMusic: this.pauseMusic,
-				stopMusic: this.stopMusic,
-				toggleMusic: this.toggleMusic,
-				nextSong: this.nextSong,
-			},
-			songs: [
-				{
-					title: 'In the Mood',
-					url: InTheMood,
-				},
-				{
-					title: 'Orange Colored Sky',
-					url: OrangeColoredSky,
-				},
-			],
-			currentSong: 0,
-		}
+
+		this.state = {}
 	}
 
-	playMusic() {
-		this.setState({
-			player: {
-				playStatus: Sound.status.PLAYING
-			}
-		})
-	}
 
-	pauseMusic() {
-		this.setState({
-			player: {
-				playStatus: Sound.status.PAUSED
-			}
-		})
-	}
-
-	stopMusic() {
-		this.setState({
-			player: {
-				playStatus: Sound.status.STOPPED
-			}
-		})
-	}
-
-	toggleMusic() {
-		let newState = update(this.state, {
-			player: {
-				playStatus: {$set: this.state.player.playStatus == Sound.status.STOPPED ? Sound.status.PLAYING : Sound.status.STOPPED}
-			},
-		})
-
-		this.setState(newState)
-	}
-
-	nextSong() {
-		let nextSongIndex = (this.state.currentSong+1) % this.state.songs.length
-
-		let newState = update(this.state, {
-			player: {
-				url: {$set: this.state.songs[nextSongIndex].url},
-			},
-			currentSong: {$set: nextSongIndex},
-		})
-
-		this.setState(newState)
-	}
 
 	render() {
 		return (
 			<div>
-				<Landing playerControls={this.state.playerControls}/>
+				<Landing/>
 				<Intro/>
 				<Info/>
 				<Members/>
-				<MusicBar player={this.state.player} playerControls={this.state.playerControls}/>
+				<Music/>
 			</div>
 		);
 	}

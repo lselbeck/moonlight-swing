@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Scroll, { Link } from 'react-scroll'
 import './Members.css';
 import BandSectionals from './components/BandSectionals/BandSectionals'
 import Vocalists from './components/Vocalists/Vocalists'
+import ScrollLink from '../../components/ScrollLink/ScrollLink'
 import WholeBandNarrow from '../../pics/whole-band-narrow.jpg'
 import MarkKunz from '../../pics/mark-kunz.jpg'
 import SaxesAndWoodwinds from '../../pics/saxes-and-woodwinds.jpg'
@@ -112,8 +112,8 @@ export default class Members extends Component {
 								<span className='first-word'>M</span>eet Mark Kunz, the leader of the band.  Born and raised in the Seattle area,
 								Mark started his musical career as a saxaphone player in the US Army where he played across
 								America.  He joined Moonlight Swing Orchestra in 1980, becoming the leader of the group in 2005.
-								Focusing on refining the band's sound has been Mark's goal, and the <Link className='rounded inline-music-link'>
-								music speaks for itself!</Link>
+								Focusing on refining the band's sound has been Mark's goal, and the <ScrollLink className='rounded inline-music-link'
+								to='music'>music speaks for itself!</ScrollLink>
 							</p>
 						</div>
 					</div>
