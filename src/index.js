@@ -102,20 +102,28 @@ class App extends Component {
 	constructor(props) {
 		super(props)
 
+		this.globalStop = this.globalStop.bind(this)
 
-		this.state = {}
+		this.state = {
+			playStatus: Sound.status.STOPPED,
+			globalStop: this.globalStop
+		}
 	}
 
-
+	globalStop() {
+		this.setState({
+			playStatus: Sound.status.STOPPED,
+		})
+	}
 
 	render() {
 		return (
 			<div>
-				<Landing/>
+				<Landing player={this.state}/>
 				<Intro/>
 				<Info/>
 				<Members/>
-				<Music/>
+				<Music player={this.state}/>
 			</div>
 		);
 	}

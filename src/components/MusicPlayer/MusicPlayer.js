@@ -12,41 +12,39 @@ export default class MusicPlayer extends React.Component {
 		this.state = {
 			player: {
 				url: this.props.songs[0].url,
-				playStatus: Sound.status.STOPPED
+				playStatus: this.props.playStatus
 			},
 			icon: FaPlayCircle,
 			currentSongIndex: 0,
 		}
 
 		this.play = this.play.bind(this)
-		this.pause = this.pause.bind(this)
 		this.stop = this.stop.bind(this)
 		this.togglePlay = this.togglePlay.bind(this)
 		this.next = this.next.bind(this)
+		this.handleFinishPlaying = this.handleFinishPlaying.bind(this)
 	}
 
 	play() {
-		this.setState({
+		let newState = update(this.state, {
 			player: {
-				playStatus: Sound.status.PLAYING
-			}
+				playStatus: {$set: Sound.status.PLAYING}
+			},
+			icon: {$set: FaStopCircle},
 		})
-	}
 
-	pause() {
-		this.setState({
-			player: {
-				playStatus: Sound.status.PAUSED
-			}
-		})
+		this.setState(newState)
 	}
 
 	stop() {
-		this.setState({
+		let newState = update(this.state, {
 			player: {
-				playStatus: Sound.status.STOPPED
-			}
+				playStatus: {$set: Sound.status.STOPPED}
+			},
+			icon: {$set: FaPlayCircle},
 		})
+
+		this.setState(newState)
 	}
 
 	togglePlay() {
@@ -73,11 +71,19 @@ export default class MusicPlayer extends React.Component {
 		this.setState(newState)
 	}
 
+	handleFinishPlaying() {
+		if (this.props.stopOnFinish) {
+			this.stop()
+		} else {
+			this.next()
+		}
+	}
+
 	render() {
 		return (
 			<div>
 				<MyIcon icon={this.state.icon} className={this.props.className} id={this.props.id} onClick={this.togglePlay}/>
-				<Sound {...this.state.player} onFinishedPlaying={this.next}/>
+				<Sound {...this.state.player} onFinishedPlaying={this.handleFinishPlaying}/>
 			</div>
 		)
 	}

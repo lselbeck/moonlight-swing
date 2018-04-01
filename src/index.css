@@ -279,10 +279,43 @@ hr {
 	padding-top: 7vh;
 }
 
-/******* MUSIC PLAYER *******/
-.player-container {
-	position:fixed;
-	height: 200px;
-	width: 100%;
-	left:0;
+/******* MUSIC SECTION *******/
+#music {
+	padding-top: 7vh;
+	padding-bottom: 7vh;
+	position: relative;
+	color: white;
+	mix-blend-mode: difference;
+	font-family: 'Semplicita Medium', Arial, Helvetica, sans-serif;
+}
+
+#music::after {
+	background-image: 
+	  linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+	  url(./pics/glen-miller-record.jpg);
+	background-size: cover;
+	background-position: 0% 100%;
+	background-repeat: no-repeat;
+	content:'';
+	position: absolute;
+	top:0px;
+	left: 0px;
+	width:100%;
+	height:100%;
+	z-index:-1;
+	opacity: .95; /* Here is your opacity */
+}
+
+.music-list-button {
+	font-size: 4rem;
+}
+
+.inline-light-link {
+	border-bottom: 2px solid rgba(255,255,255,0.93);
+	cursor:pointer;
+	background: rgba(255,255,255,0.2);
+}
+
+.inline-light-link:hover {
+	background: rgba(255,255,255,0.3);
 }
