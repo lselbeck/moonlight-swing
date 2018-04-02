@@ -48,7 +48,7 @@ class Music extends Component {
 			]
   	}
   }
-
+  
   render() {
     return (
 			<section id='music'>
@@ -64,7 +64,7 @@ class Music extends Component {
 					<div className='row justify-content-center'>
 						{this.state.songs.map(song => (
 							<div className='col-7 d-flex align-items-center my-2'>
-								<MusicPlayer className='music-list-button float-left mr-3' playStatus={this.props.playStatus} songs={[song]} stopOnFinish={true}/>
+								<MusicPlayer className='music-list-button float-left mr-3' player={this.props.player} songs={[song]} stopOnFinish={true}/>
 								<span>{song.title}</span>
 							</div>
 						))}

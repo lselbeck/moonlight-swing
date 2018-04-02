@@ -49,7 +49,7 @@ export default class Landing extends React.Component {
 									<span className='title-swing-orchestra'>Swing Orchestra</span>
 								</div>
 								<div className='col-4'>
-									<MusicPlayer id='play-button' player={this.props.playStatus} songs={this.state.songs}/>
+									<MusicPlayer id='play-button' player={this.props.player} songs={this.state.songs}/>
 								</div>
 							</div>
 						</div>

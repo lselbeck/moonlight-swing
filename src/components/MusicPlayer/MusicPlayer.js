@@ -8,15 +8,17 @@ import MyIcon from '../MyIcon/MyIcon'
 export default class MusicPlayer extends React.Component {
 	constructor(props) {
 		super(props)
-
 		this.state = {
 			player: {
 				url: this.props.songs[0].url,
-				playStatus: this.props.playStatus
+				playStatus: this.props.player.playStatus
 			},
-			icon: FaPlayCircle,
+			icon: this.props.player.playStatus === Sound.status.PLAYING ? FaStopCircle : FaPlayCircle,
 			currentSongIndex: 0,
 		}
+
+
+		console.log(this.state)
 
 		this.play = this.play.bind(this)
 		this.stop = this.stop.bind(this)
@@ -26,6 +28,8 @@ export default class MusicPlayer extends React.Component {
 	}
 
 	play() {
+		this.props.player.globalStop()
+
 		let newState = update(this.state, {
 			player: {
 				playStatus: {$set: Sound.status.PLAYING}
@@ -48,14 +52,11 @@ export default class MusicPlayer extends React.Component {
 	}
 
 	togglePlay() {
-		let newState = update(this.state, {
-			player: {
-				playStatus: {$set: this.state.player.playStatus == Sound.status.STOPPED ? Sound.status.PLAYING : Sound.status.STOPPED},
-			},
-			icon: {$set: this.state.icon === FaPlayCircle ? FaStopCircle : FaPlayCircle},
-		})
-
-		this.setState(newState)
+		if (this.state.player.playStatus == Sound.status.STOPPED) {
+			this.play()
+		} else {
+			this.stop()
+		}
 	}
 
 	next() {
@@ -77,6 +78,14 @@ export default class MusicPlayer extends React.Component {
 		} else {
 			this.next()
 		}
+	}
+
+	componentWillReceiveProps(nextProps) {
+	  // You don't have to do this check first, but it can help prevent an unneeded render
+	  if (this.state.player.playStatus === Sound.status.PLAYING &&
+	  		this.props.player.playStatus === Sound.status.STOPPED) {
+	    this.stop()
+	  }
 	}
 
 	render() {

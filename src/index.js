@@ -111,6 +111,7 @@ class App extends Component {
 	}
 
 	globalStop() {
+		console.log(this.state.playStatus)
 		this.setState({
 			playStatus: Sound.status.STOPPED,
 		})
