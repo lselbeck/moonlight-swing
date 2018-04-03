@@ -54,7 +54,7 @@ class Music extends Component {
 			<section id='music'>
 				<div className='container' id='music-container'>
 					<div className='row justify-content-center'>
-						<div className='col-7'>
+						<div className='col-11 col-md-10 col-lg-8 col-xl-7'>
 							<h2>
 								Take a sample of the real thing!  Or view our <Link className='rounded inline-light-link'>
 								full repotoire here!</Link>
@@ -63,7 +63,7 @@ class Music extends Component {
 					</div>
 					<div className='row justify-content-center'>
 						{this.state.songs.map(song => (
-							<div className='col-7 d-flex align-items-center my-2'>
+							<div className='col-11 col-md-10 col-lg-8 col-xl-7 d-flex align-items-center my-2'>
 								<MusicPlayer className='music-list-button float-left mr-3' player={this.props.player} songs={[song]} stopOnFinish={true}/>
 								<span>{song.title}</span>
 							</div>

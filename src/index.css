@@ -80,6 +80,13 @@ hr {
 	}
 }
 
+/* FOR XS AND SM SCREENS */
+@media (max-width: 576px) {
+	body {
+		font-size: 1.2;
+	}
+}
+
 /******* LANDING SECTION *******/
 
 #landing {
@@ -139,7 +146,7 @@ hr {
 	}
 
 	.title-swing-orchestra {
-		font-size: 12vw;
+		font-size: 13vw;
 		padding-left: 8vw;
 	}
 
@@ -170,9 +177,8 @@ hr {
 
 #info {
 	position:relative;
-	min-height: 80vh;
 	padding-top: 7vh;
-	padding-bottom: 7vh
+	padding-bottom: 10vh
 }
 
 #info::after {
@@ -237,7 +243,6 @@ hr {
 
 #members-container {
 	padding-top: 10vh;
-	padding-bottom: 10vh;
 }
 
 .sectional-title {
@@ -318,4 +323,13 @@ hr {
 
 .inline-light-link:hover {
 	background: rgba(255,255,255,0.3);
+}
+
+
+/******* EVENTS *******/
+#events {
+	padding-top: 7vh;
+	padding-bottom: 5vh;
+	background-image: url('./pics/events-bg.jpg');
+	background-size: cover;
 }

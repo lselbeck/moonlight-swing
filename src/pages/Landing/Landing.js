@@ -45,10 +45,10 @@ export default class Landing extends React.Component {
 						<div className='col-12 col-md-8 order-1 order-md-2'>
 							<div className='row align-items-center'>
 								<h1 className='col-12 title-moonlight'>Moonlight</h1>
-								<div className='col-8'>
+								<div className='col-9 col-md-8'>
 									<span className='title-swing-orchestra'>Swing Orchestra</span>
 								</div>
-								<div className='col-4'>
+								<div className='col-3 col-md-4'>
 									<MusicPlayer id='play-button' player={this.props.player} songs={this.state.songs}/>
 								</div>
 							</div>

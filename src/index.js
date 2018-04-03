@@ -5,6 +5,7 @@ import registerServiceWorker from './registerServiceWorker'
 import Scroll, { Link } from 'react-scroll'
 import Sound from 'react-sound'
 import update from 'immutability-helper';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 
 import 'bootstrap/dist/css/bootstrap.css'
 import './index.css'
@@ -44,10 +45,13 @@ const Intro = () => (
 				</div>
 			</div>
 			<div className='row justify-content-center align-items-center mt-4'>
-				<div className='col-6 col-md-4 d-flex justify-content-center'>
+				<div className='col-4 col-md-3 d-flex justify-content-center'>
 					<ButtonLink className='intro-button' color='secondary' to='info'>Learn More</ButtonLink>
 				</div>
-				<div className='col-6 col-md-4 d-flex justify-content-center'>
+				<div className='col-4 col-md-3 d-flex justify-content-center'>
+					<ButtonLink className='intro-button' color='secondary'>Upcoming Events</ButtonLink>
+				</div>
+				<div className='col-4 col-md-3 d-flex justify-content-center'>
 					<ButtonLink className='intro-button' color='secondary'>Book Now</ButtonLink>
 				</div>
 			</div>
@@ -98,6 +102,128 @@ class Info extends Component {
 	}
 }
 
+class Events extends Component {
+	constructor(props) {
+		super(props)
+
+		this.state = {
+			events: [
+				{
+					start: new Date(2018, 6-1, 30, 17, 0, 0),
+					end:   new Date(2018, 6-1, 30, 20, 0, 0),
+					venue: 'Monroe Community Senior Center',
+					name: 'Swingin\' to Summer',
+					address: '276 Sky River Parkway, Monroe, WA 98272',
+				},
+				{
+					start: new Date(2018, 7-1, 21, 19, 0, 0),
+					end:   new Date(2018, 7-1, 21, 21, 0, 0),
+					venue: 'Crossroads Bellevue Market Stage',
+					name: '',
+					address: '15600 NE 8th St, Bellevue, WA 98007',
+				},
+				{
+					start: new Date(2018, 8-1, 27, 17, 30, 0),
+					end:   new Date(2018, 8-1, 27, 20, 30, 0),
+					venue: 'Evergreen State Fair Xfinity Courtyard Stage',
+					name: '',
+					address: '14405 179th Ave SE, Monroe, WA 98272',
+				},
+				{
+					start: new Date(2018, 9-1, 22, 17, 0, 0),
+					end:   new Date(2018, 9-1, 22, 20, 0, 0),
+					venue: 'Monroe Community Senior Center',
+					name: 'Autumn Social',
+					address: '276 Sky River Parkway, Monroe, WA, 98272',
+				},
+				{
+					start: new Date(2018, 11-1, 24, 19, 0, 0),
+					end:   new Date(2018, 11-1, 24, 21, 0, 0),
+					venue: 'Crossroads Bellevue Market Stage',
+					name: '',
+					address: '15600 NE 8th St, Bellevue, WA 98007',
+				},
+				{
+					start: new Date(2018, 12-1, 8, 13, 0, 0),
+					end:   new Date(2018, 12-1, 8, 15, 30, 0),
+					venue: 'Monroe Community Senior Center',
+					name: 'Swing into Christmas',
+					address: '276 Sky River Parkway, Monroe, WA, 98272',
+				},
+				{
+					start: new Date(2018, 12-1, 31, 18, 30, 0),
+					end:   new Date(2018, 12-1, 31, 21, 30, 0),
+					venue: 'Emerald Heights',
+					name: 'New Years Eve Gala (Private Event)',
+					address: '276 Sky River Parkway, Monroe, WA, 98272',
+				},
+			]
+		}
+	}
+
+	render() {
+		let mappableEvents = {}
+		for (let i = 0; i < this.state.events.length; i++) {
+			let e = this.state.events[i]
+			let year = e.start.getFullYear()
+			let month = e.start.getMonth()
+
+			if (mappableEvents[year] === undefined) {
+				mappableEvents[year] = {}
+			}
+
+			if (mappableEvents[year][month] === undefined) {
+				mappableEvents[year][month] = []
+			}
+
+			mappableEvents[year][month].push(e)
+		}
+
+		return (
+			<section id='events'>
+				<div className='container' id='events-container'>
+					<div className='row'>
+						<div className='col-12 mb-4'>
+							<h1 className='vocalists-title'>Upcoming Events</h1>
+						</div>
+						<div className='col-12'>
+							<Tabs>
+								<TabList>
+									{Object.keys(mappableEvents).map(year => <Tab>{year}</Tab>)}
+								</TabList>
+
+								{Object.keys(mappableEvents).map(year => (
+									<TabPanel>
+										<Tabs>
+											<TabList>
+												{Object.keys(mappableEvents[year]).map(month => <Tab>{month}</Tab>)}
+											</TabList>
+
+											{Object.keys(mappableEvents[year]).map(month => (
+												<TabPanel>
+													{mappableEvents[year][month].map(event => (
+														<div>
+															<h3>{event.start.getDate()}</h3>
+															<p>{event.name}</p>
+															<p>{event.venue}</p>
+															<p>{event.address}</p>
+														</div>
+													))}
+												</TabPanel>
+											))}
+
+										</Tabs>
+									</TabPanel>
+								))}
+							</Tabs>
+						</div>
+					</div>
+				</div>
+			</section>
+		)
+	}
+}
+
 class App extends Component {
 	constructor(props) {
 		super(props)
@@ -111,10 +237,7 @@ class App extends Component {
 	}
 
 	globalStop() {
-		console.log(this.state.playStatus)
-		this.setState({
-			playStatus: Sound.status.STOPPED,
-		})
+		this.setState({ playStatus: Sound.status.STOPPED })
 	}
 
 	render() {
@@ -125,6 +248,7 @@ class App extends Component {
 				<Info/>
 				<Members/>
 				<Music player={this.state}/>
+				<Events/>
 			</div>
 		);
 	}
