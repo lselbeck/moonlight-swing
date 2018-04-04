@@ -28,6 +28,10 @@ export default class BandSectionals extends React.Component {
 	}
 
 	render() {
-		return this.props.sectionals.map((section, i) => <BandSectional {...section} imgFirst={i%2!=0}/>)
+		return (
+			<div>
+				{this.props.sectionals.map((section, i) => <BandSectional {...section} imgFirst={i%2!=0}/>)}
+			</div>
+		)
 	}
 }
