@@ -328,8 +328,9 @@ hr {
 
 /******* EVENTS *******/
 #events {
+	min-height: 70vh;
 	padding-top: 7vh;
-	padding-bottom: 5vh;
+	padding-bottom: 35vh;
 	background-image: url('./pics/events-bg.jpg');
 	background-size: cover;
 }
