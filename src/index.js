@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
-import {BrowserRouter as Router, Route} from 'react-router-dom'
+//import {BrowserRouter as Router, Route} from 'react-router-dom'
 import registerServiceWorker from './registerServiceWorker'
-import Scroll, { Link } from 'react-scroll'
 import Sound from 'react-sound'
 import update from 'immutability-helper';
 

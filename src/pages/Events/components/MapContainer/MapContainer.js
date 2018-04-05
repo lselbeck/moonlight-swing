@@ -24,3 +24,6 @@ render() {
 export default GoogleApiWrapper({
   apiKey: keys.geocodeKey
 })(MapContainer)
+
+
+//TODO use 'google-map-react' instead

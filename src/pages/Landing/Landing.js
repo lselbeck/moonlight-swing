@@ -1,6 +1,5 @@
 import React from 'react'
 import WholeBand from '../../pics/whole-band.jpg'
-import MyIcon from '../../components/MyIcon/MyIcon'
 import MusicPlayer from '../../components/MusicPlayer/MusicPlayer'
 
 import InTheMood from '../../music/in-the-mood.mp3'

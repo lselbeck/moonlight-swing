@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
-import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 import {MapContainer} from './components/MapContainer/MapContainer'
 
 import keys from './keys'
@@ -72,13 +71,13 @@ export default class Events extends Component {
 	suffixOf(i) {
     var j = i % 10,
         k = i % 100;
-    if (j == 1 && k != 11) {
+    if (j === 1 && k !== 11) {
         return "st";
     }
-    if (j == 2 && k != 12) {
+    if (j === 2 && k !== 12) {
         return "nd";
     }
-    if (j == 3 && k != 13) {
+    if (j === 3 && k !== 13) {
         return "rd";
     }
     return "th";
@@ -87,12 +86,10 @@ export default class Events extends Component {
 	async getLatAndLong(address) {
 		try {
 			let response = await fetch(
-				'https://maps.google.com/maps/api/geocode/json/',
+				`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${keys.geocodeKey}`,
 				{
-					body: JSON.stringify({
-						address: address,
-						key: keys.geocodeKey
-					})
+					method: 'GET',
+					mode: 'cors',
 				}
 			)
 			let responseJson = await response.json();
@@ -102,12 +99,14 @@ export default class Events extends Component {
 		}
 	}
 
-	componentDidMount() {
+	async componentDidMount() {
 		let sortedEvents = this.state.events.sort((a, b) => new Date(a.start) - new Date(b.start))
 		let firstEvent = sortedEvents[0]
 
+		let coords = await this.getLatAndLong(firstEvent.address)
+
 		this.setState({
-			marker: this.getLatAndLong(firstEvent.address)
+			marker: coords
 		})
 	}
 
@@ -147,7 +146,7 @@ export default class Events extends Component {
 							<p>{firstEvent.start.toLocaleString('en-us', dateStringOptions)}</p>
 						</div>
 						<div className='col-5'>
-							<MapContainer></MapContainer>
+							<MapContainer location={this.state.marker}></MapContainer>
 						</div>
 					</div>
 					<div className='row mt-5'>
@@ -155,20 +154,20 @@ export default class Events extends Component {
 							<p className='text-uppercase'><strong>Calendar</strong></p>
 							<Tabs>
 								<TabList>
-									{Object.keys(mappableEvents).map(year => <Tab className='year-tabs'>{year}</Tab>)}
+									{Object.keys(mappableEvents).map((year, i) => <Tab className='year-tabs' key={i}>{year}</Tab>)}
 								</TabList>
 
-								{Object.keys(mappableEvents).map(year => (
-									<TabPanel>
+								{Object.keys(mappableEvents).map((year, i) => (
+									<TabPanel key={i}>
 										<Tabs>
 											<TabList>
-												{Object.keys(mappableEvents[year]).map(month => <Tab className='month-tabs'>{month}</Tab>)}
+												{Object.keys(mappableEvents[year]).map((month, i) => <Tab className='month-tabs' key={i}>{month}</Tab>)}
 											</TabList>
 
-											{Object.keys(mappableEvents[year]).map(month => (
-												<TabPanel className='container-fluid pl-2'>
-													{mappableEvents[year][month].map(event => (
-														<div className='row'>
+											{Object.keys(mappableEvents[year]).map((month, i) => (
+												<TabPanel className='container-fluid pl-2' key={i}>
+													{mappableEvents[year][month].map((event, i) => (
+														<div className='row' key={i}>
 															<div className='col-3 col-sm-2 col-xl-1'>
 																<span className='month-date'>
 																	{event.start.getDate()}

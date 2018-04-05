@@ -2,18 +2,12 @@ import React from 'react'
 import {Button} from 'reactstrap'
 import ScrollLink from '../ScrollLink/ScrollLink'
 
-export default class ButtonLink extends React.Component {
-	constructor(props) {
-		super(props)
-	}
+const ButtonLink = props => (
+	<ScrollLink to={props.to}>
+		<Button {...props} style={{borderRadius: 500}}>
+			{props.children}
+		</Button>
+	</ScrollLink>
+)
 
-	render() {
-		return (
-			<ScrollLink to={this.props.to}>
-				<Button {...this.props} style={{borderRadius: 500}}>
-					{this.props.children}
-				</Button>
-			</ScrollLink>
-		)
-	}
-}
+export default ButtonLink

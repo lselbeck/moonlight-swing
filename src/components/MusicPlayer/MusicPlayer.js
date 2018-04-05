@@ -17,9 +17,6 @@ export default class MusicPlayer extends React.Component {
 			currentSongIndex: 0,
 		}
 
-
-		console.log(this.state)
-
 		this.play = this.play.bind(this)
 		this.stop = this.stop.bind(this)
 		this.togglePlay = this.togglePlay.bind(this)
@@ -52,7 +49,7 @@ export default class MusicPlayer extends React.Component {
 	}
 
 	togglePlay() {
-		if (this.state.player.playStatus == Sound.status.STOPPED) {
+		if (this.state.player.playStatus === Sound.status.STOPPED) {
 			this.play()
 		} else {
 			this.stop()

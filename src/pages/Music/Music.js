@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Scroll, { Link } from 'react-scroll'
+import { Link } from 'react-scroll'
 import MusicPlayer from '../../components/MusicPlayer/MusicPlayer'
 import ButtonLink from '../../components/ButtonLink/ButtonLink'
 
@@ -62,8 +62,8 @@ class Music extends Component {
 						</div>
 					</div>
 					<div className='row justify-content-center'>
-						{this.state.songs.map(song => (
-							<div className='col-11 col-md-10 col-lg-8 col-xl-7 d-flex align-items-center my-2'>
+						{this.state.songs.map((song, i) => (
+							<div className='col-11 col-md-10 col-lg-8 col-xl-7 d-flex align-items-center my-2' key={i}>
 								<MusicPlayer className='music-list-button float-left mr-3' player={this.props.player} songs={[song]} stopOnFinish={true}/>
 								<span>{song.title}</span>
 							</div>
