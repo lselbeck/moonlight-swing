@@ -1,29 +1,37 @@
 import React from 'react'
-import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
+import GoogleMapReact from 'google-map-react'
 import keys from '../../keys'
+import Marker from './components/Marker'
 
-export class MapContainer extends React.Component {
-render() {
+export default class MapContainer extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      height: '100%'
+    }
+  }
+
+  componentDidMount() {
+    this.setState({
+      height: this.refs.googleMap.parentNode.clientWidth * 0.8
+    })
+  }
+
+  render() {
     return (
-      <Map google={this.props.google} zoom={14}>
- 
-        <Marker onClick={this.onMarkerClick}
-                name={this.props.location}
-                position={this.props.marker} />
- 
-        <InfoWindow onClose={this.onInfoWindowClose}>
-            <div>
-              <h1>{this.props.location}</h1>
-            </div>
-        </InfoWindow>
-      </Map>
-    );
+      // Important! Always set the container height explicitly
+      <div ref='googleMap' style={{ height: this.state.height, width: '100%' }}>
+        <GoogleMapReact
+          bootstrapURLKeys={{ key: keys.mapsKey }}
+          defaultCenter={this.props.center}
+          defaultZoom={11}
+        >
+          <Marker
+            {...this.props.center}
+          />
+        </GoogleMapReact>
+      </div>
+    )
   }
 }
-
-export default GoogleApiWrapper({
-  apiKey: keys.geocodeKey
-})(MapContainer)
-
-
-//TODO use 'google-map-react' instead

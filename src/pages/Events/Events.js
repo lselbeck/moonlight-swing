@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
-import {MapContainer} from './components/MapContainer/MapContainer'
+import MapContainer from './components/MapContainer/MapContainer'
 
 import keys from './keys'
 import './tabs.css';
@@ -61,26 +61,23 @@ export default class Events extends Component {
 					address: '276 Sky River Parkway, Monroe, WA, 98272',
 				},
 			],
-			marker: {
-				lat: 47.8488246,
-				lng: -121.9801468,
-			},
+			center: undefined,
 		}
 	}
 
 	suffixOf(i) {
-    var j = i % 10,
-        k = i % 100;
-    if (j === 1 && k !== 11) {
-        return "st";
-    }
-    if (j === 2 && k !== 12) {
-        return "nd";
-    }
-    if (j === 3 && k !== 13) {
-        return "rd";
-    }
-    return "th";
+		var j = i % 10,
+			k = i % 100;
+		if (j === 1 && k !== 11) {
+			return "st";
+		}
+		if (j === 2 && k !== 12) {
+			return "nd";
+		}
+		if (j === 3 && k !== 13) {
+			return "rd";
+		}
+		return "th";
 	}
 
 	async getLatAndLong(address) {
@@ -106,7 +103,7 @@ export default class Events extends Component {
 		let coords = await this.getLatAndLong(firstEvent.address)
 
 		this.setState({
-			marker: coords
+			center: coords
 		})
 	}
 
@@ -136,17 +133,17 @@ export default class Events extends Component {
 		return (
 			<section id='events'>
 				<div className='container' id='events-container'>
-					<div className='row mb-5'>
+					<div className='row mb-5 no-gutters'>
 						<div className='col-12 mb-4'>
 							<h1 className='vocalists-title'>Upcoming Events</h1>
 						</div>
-						<div className='col-7'>
+						<div className='col-12 col-md-6'>
 							<p className='text-uppercase'><strong>See us perform at</strong></p>
 							<h1>{firstEvent.venue}</h1>
 							<p>{firstEvent.start.toLocaleString('en-us', dateStringOptions)}</p>
 						</div>
-						<div className='col-5'>
-							<MapContainer location={this.state.marker}></MapContainer>
+						<div className='col-12 col-md-6'>
+							{this.state.center && <MapContainer center={this.state.center}></MapContainer>}
 						</div>
 					</div>
 					<div className='row mt-5'>
