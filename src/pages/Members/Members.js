@@ -97,7 +97,7 @@ export default class Members extends Component {
 				<div className='container' id='members-container'>
 					<div className='row whole-band-row'>
 						<div className='col-12'>
-							<img src={WholeBandNarrow} alt='Whole band' className='w-100 rounded mb-2' />
+							<img src={WholeBandNarrow} alt='Whole band' className='w-100 mb-2 custom-rounded' />
 							<p className='caption-text text-center'>
 								We are 17 members strong with over <strong>250 years</strong> of cumulative experience!
 							</p>
@@ -105,7 +105,7 @@ export default class Members extends Component {
 					</div>
 					<div className='row mark-kunz-row'>
 						<div className='col-12 col-md-5 col-lg-4 mb-4'>
-							<img src={MarkKunz} alt='Mark Kunz' className='img-fluid rounded mx-auto d-block' />
+							<img src={MarkKunz} alt='Mark Kunz' className='img-fluid custom-rounded mx-auto d-block' />
 						</div>
 						<div className='col-12 col-md-7 col-lg-8'>
 							<p className='members-text mt-4'>

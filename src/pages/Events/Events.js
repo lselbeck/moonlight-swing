@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import MapContainer from './components/MapContainer/MapContainer'
+import ButtonLink from '../../components/ButtonLink/ButtonLink'
 
 import keys from './keys'
 import './tabs.css';
@@ -80,6 +81,14 @@ export default class Events extends Component {
 		return "th";
 	}
 
+	getTimespanString(event) {
+		return (
+			event.start.toLocaleString('en-US', { hour: 'numeric', hour12: true }).replace(/\s/g, "") +
+			' - ' +
+			event.end.toLocaleString('en-US', { hour: 'numeric', hour12: true }).replace(/\s/g, "")
+		).toLowerCase()
+	}
+
 	async getLatAndLong(address) {
 		try {
 			let response = await fetch(
@@ -139,8 +148,10 @@ export default class Events extends Component {
 						</div>
 						<div className='col-12 col-md-6'>
 							<p className='text-uppercase'><strong>See us perform at</strong></p>
-							<h1>{firstEvent.venue}</h1>
-							<p>{firstEvent.start.toLocaleString('en-us', dateStringOptions)}</p>
+							<h1 className='mt-5 featured-name'>"{firstEvent.name}"</h1>
+							{!!firstEvent.name.trim() ? <div>{firstEvent.venue}</div> : <h1>{firstEvent.venue}</h1>}
+							<div>{firstEvent.start.toLocaleString('en-us', dateStringOptions)}</div>
+							<div className='featured-address'>{firstEvent.address}</div>
 						</div>
 						<div className='col-12 col-md-6'>
 							{this.state.center && <MapContainer center={this.state.center}></MapContainer>}
@@ -176,7 +187,12 @@ export default class Events extends Component {
 																	{(event.name && event.name.length !== 0) ? event.name + ' at ' : ''}
 																	{event.venue}
 																</span>
-																<p className='event-address'>{event.address}</p>
+																<p>
+																	<span className='event-time'>
+																		{this.getTimespanString(event)}
+																	</span>
+																	<span className='event-address ml-3 pl-3'>{event.address}</span>
+																</p>
 															</div>
 														</div>
 													))}
@@ -187,6 +203,11 @@ export default class Events extends Component {
 									</TabPanel>
 								))}
 							</Tabs>
+						</div>
+					</div>
+					<div className='row mt-5'>
+						<div className='col-12 d-flex justify-content-center'>
+							<ButtonLink className='intro-button event-button' to='contact'>Book us for your event!</ButtonLink>
 						</div>
 					</div>
 				</div>

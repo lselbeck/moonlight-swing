@@ -9,7 +9,7 @@ const BandSectional = props => (
 			</div>
 		</div>
 		<div className={`col-12 col-md-6 col-xl-5 ${props.imgFirst ? 'order-md-first' : ''}`}>
-			<img src={props.img} alt={props.title} className='w-100' />
+			<img src={props.img} alt={props.title} className='w-100 custom-rounded' />
 		</div>
 	</div>
 )

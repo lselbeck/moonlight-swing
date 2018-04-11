@@ -76,4 +76,18 @@
 
 .event-address {
   font-size: 1.2rem;
+  border-left: 1px solid rgba(255, 255, 255, .6);
+}
+
+.featured-address {
+  font-size: 1.2rem;
+}
+
+.featured-name {
+  font-size: 3.5rem;
+  font-family: 'Semplicita Medium', Arial, Helvetica, sans-serif;
+}
+
+.event-time {
+  font-family: 'Semplicita Medium', Arial, Helvetica, sans-serif;
 }

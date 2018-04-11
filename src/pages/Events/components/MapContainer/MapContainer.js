@@ -14,7 +14,7 @@ export default class MapContainer extends React.Component {
 
   componentDidMount() {
     this.setState({
-      height: this.refs.googleMap.parentNode.clientWidth * 0.8
+      height: this.refs.googleMap.parentNode.clientWidth * 0.75
     })
   }
 

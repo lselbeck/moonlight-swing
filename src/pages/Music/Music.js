@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-scroll'
 import MusicPlayer from '../../components/MusicPlayer/MusicPlayer'
 import ButtonLink from '../../components/ButtonLink/ButtonLink'
 
@@ -56,8 +55,8 @@ class Music extends Component {
 					<div className='row justify-content-center'>
 						<div className='col-11 col-md-10 col-lg-8 col-xl-7'>
 							<h2>
-								Take a sample of the real thing!  Or view our <Link className='rounded inline-light-link'>
-								full repotoire here!</Link>
+								Take a sample of the real thing! Or view our <a href='/song-list.pdf' target='_blank' className='rounded inline-light-link'>
+								full repotoire here!</a>
 							</h2>
 						</div>
 					</div>
@@ -71,7 +70,7 @@ class Music extends Component {
 					</div>
 					<div className='row mt-4'>
 						<div className='col-12 d-flex justify-content-center'>
-							<ButtonLink className='intro-button'>Hear Us Live!</ButtonLink>
+							<ButtonLink className='intro-button' to='events'>Hear Us Live!</ButtonLink>
 						</div>
 					</div>
 				</div>

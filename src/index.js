@@ -13,6 +13,7 @@ import Members from './pages/Members/Members'
 import Landing from './pages/Landing/Landing'
 import Music from './pages/Music/Music'
 import Events from './pages/Events/Events'
+import Contact from './pages/Contact/Contact'
 
 
 
@@ -51,7 +52,7 @@ const Intro = () => (
 					<ButtonLink className='intro-button' color='secondary' to='events'>Upcoming Events</ButtonLink>
 				</div>
 				<div className='col-4 col-md-3 d-flex justify-content-center'>
-					<ButtonLink className='intro-button' color='secondary'>Book Now</ButtonLink>
+					<ButtonLink className='intro-button' color='secondary' to='contact'>Book Now</ButtonLink>
 				</div>
 			</div>
 		</div>
@@ -92,7 +93,7 @@ class Info extends Component {
 							<ButtonLink className='intro-button' color='secondary' to='members'>Meet the Band</ButtonLink>
 						</div>
 						<div className='col-6 col-md-4 d-flex justify-content-center'>
-							<ButtonLink className='intro-button' color='secondary'>Book Now!</ButtonLink>
+							<ButtonLink className='intro-button' color='secondary' to='contact'>Book Now!</ButtonLink>
 						</div>
 					</div>
 				</div>
@@ -126,6 +127,7 @@ class App extends Component {
 				<Members/>
 				<Music player={this.state}/>
 				<Events/>
+				<Contact/>
 			</div>
 		);
 	}
