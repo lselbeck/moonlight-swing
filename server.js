@@ -9,7 +9,7 @@ const port = process.env.PORT || 5000;
 
 const BUILD_DIR = path.join(__dirname, 'build')
 
-app.use(express.static(BUILD_DIR));
+//app.use(express.static(BUILD_DIR));
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }));
 
