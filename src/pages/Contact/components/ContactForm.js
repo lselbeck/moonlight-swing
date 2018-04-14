@@ -10,7 +10,7 @@ export default class NameForm extends React.Component {
 			name: '',
 			email: '',
 			message: '',
-		};
+		}
 
 		this.handleNameChange = this.handleNameChange.bind(this)
 		this.handleEmailChange = this.handleEmailChange.bind(this)
@@ -22,7 +22,7 @@ export default class NameForm extends React.Component {
 	handleNameChange(event) {
 		this.setState({
 			name: extract(event.target.value, '[0-9a-zA-Z ]+')
-		});
+		})
 	}
 
 	handleEmailChange(event) {
@@ -38,19 +38,25 @@ export default class NameForm extends React.Component {
 	}
 
 	async handleSubmit(event) {
-		alert(`Submitted: ${this.state.name} ${this.state.email} ${this.state.message}`)
 		event.preventDefault()
 		await this.sendEmail()
 	}
 
 	async sendEmail() {
-		let res = fetch('/api/email', {
-			method: 'post',
-			body: JSON.stringify(this.state)
-		})
-
-		let resJson = await res.json()
-		console.log(resJson)
+		try {
+			await fetch('/api/email', {
+				method: 'post',
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify(this.state)
+			})
+			this.setState({
+				name: '',
+				email: '',
+				message: '',
+			})
+		} catch(err) {
+			console.error(err)
+		}
 	}
 
 	submitEnabled() {
