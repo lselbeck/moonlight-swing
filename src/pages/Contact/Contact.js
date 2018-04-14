@@ -26,7 +26,7 @@ export default class Contact extends Component {
 						</div>
 					</div>
 					<div className='row'>
-						<div className='col-12 col-md-6'>
+						<div className='col-12 col-md-6 mb-4'>
 							<h2>
 								Dont be shy, contact us today!  We are available for:
 							</h2>
@@ -36,10 +36,16 @@ export default class Contact extends Component {
 									<span className='text-capitalize'>{type}</span>
 								</p>
 							))}
+							<p className='mt-4'>
+								Fill out the form, or email Mark directly at <a href='mailto:mark.kunz@comcast.net'>mark.kunz@comcast.net</a>
+							</p>
 						</div>
 						<div className='col-12 col-md-6'>
 							<ContactForm/>
 						</div>
+					</div>
+					<div className='row'>
+
 					</div>
 				</div>
 			</section>

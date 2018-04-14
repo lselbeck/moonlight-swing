@@ -65,7 +65,7 @@ export default class NameForm extends React.Component {
 
 	render() {
 		return (
-			<form onSubmit={this.handleSubmit}>
+			<form onSubmit={this.handleSubmit} className={this.props.className}>
 				<div className='form-group'>
 					<label htmlFor='name' className='mb-0'>Name</label>
 					<input

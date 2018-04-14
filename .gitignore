@@ -21,4 +21,9 @@ yarn-debug.log*
 yarn-error.log*
 
 # api keys
-/src/keys.js
+keys.js
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml

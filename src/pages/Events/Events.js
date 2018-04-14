@@ -3,7 +3,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import MapContainer from './components/MapContainer/MapContainer'
 import ButtonLink from '../../components/ButtonLink/ButtonLink'
 
-import keys from './keys'
+import keys from '../../keys'
 import './tabs.css';
 
 export default class Events extends Component {

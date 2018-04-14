@@ -1,6 +1,6 @@
 import React from 'react'
 import GoogleMapReact from 'google-map-react'
-import keys from '../../keys'
+import keys from '../../../../keys'
 import Marker from './components/Marker'
 
 export default class MapContainer extends React.Component {
