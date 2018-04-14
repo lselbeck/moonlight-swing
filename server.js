@@ -1,7 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
-const mailService = require('backend-tools').mailService
+const mailService = require('backend-tools').mailService;
+const emailerPassword = require('./src/keys').emailerPassword;
+
 const app = express();
 const port = process.env.PORT || 5000;
 
@@ -31,6 +33,8 @@ app.post('/api/email', async (req, res) => {
 async function doEmail(name, email, message)
 {
 	var websiteEmailAddress = 'moonlightswingorchestra4@gmail.com';
+	var emailService = 'Gmail';
+	var desination = 'lselbeck@gmail.com';
 
 	var emailMessage = `
 		Name: ${name}
@@ -51,8 +55,8 @@ async function doEmail(name, email, message)
 	var emailSubject = 'Moonlight Swing Website: Message from ' + name;
 
 	try {
-		var mailer = mailService('Gmail', websiteEmailAddress, '');
-		await mailer.send('lselbeck@gmail.com', name, emailSubject, emailMessage)
+		var mailer = mailService(emailService, websiteEmailAddress, emailerPassword);
+		await mailer.send(desination, name, emailSubject, emailMessage)
 	}
 	catch(err) {
 		console.error(err)
