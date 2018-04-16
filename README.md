@@ -4,5 +4,9 @@ This is the working repo for the replacement to [moonlightswingorchestra.org](ht
 ## Build
 `npm i`
 
-## Run
-`npm start`
+## Run dev version
+`npm run dev`
+
+## Run prod version
+`npm run build
+ npm start`
