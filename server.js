@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const mailService = require('backend-tools').mailService;
-const emailerPassword = require('./src/keys').emailerPassword;
+const emailerPassword = require('./keys').emailerPassword;
 
 const app = express();
 const port = process.env.PORT || 5000;
