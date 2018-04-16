@@ -8,5 +8,5 @@ This is the working repo for the replacement to [moonlightswingorchestra.org](ht
 `npm run dev`
 
 ## Run prod version
-`npm run build
- npm start`
+`npm run build`
+ `npm start`
