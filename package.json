@@ -20,7 +20,7 @@
     "reactstrap": "^5.0.0-beta.2"
   },
   "scripts": {
-    "start": "node server.js",
+    "start": "npm run server",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",

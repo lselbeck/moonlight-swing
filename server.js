@@ -13,54 +13,53 @@ app.use(express.static(BUILD_DIR));
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get('/', (req, res) => {
+app.get('/', function(req, res) {
   res.sendFile(path.join(BUILD_DIR, 'index.html'));
 });
 
-app.get('/api/hello', (req, res) => {
-	res.send({ express: 'Hello From Express' });
+app.post('/api/email', function(req, res) {
+	doEmail(req.body.name, req.body.email, req.body.message)
+		.then(function() {
+			res.send({ success: true, });
+		})
+		.catch(function(err) {
+			console.error(err)
+		})
 });
 
-app.post('/api/email', async (req, res) => {
-	try {
-		await doEmail(req.body.name, req.body.email, req.body.message)
-		res.send({ success: true, });
-	} catch (err) {
-		console.error(err)
-	}
-});
-
-async function doEmail(name, email, message)
+function doEmail(name, email, message)
 {
-	var websiteEmailAddress = 'moonlightswingorchestra4@gmail.com';
-	var emailService = 'Gmail';
-	var desination = 'lselbeck@gmail.com';
+	return new Promise(function(resolve, reject) {
+		var websiteEmailAddress = 'moonlightswingorchestra4@gmail.com';
+		var emailService = 'Gmail';
+		var desination = 'lselbeck@gmail.com';
 
-	var emailMessage = `
-		Name: ${name}
+		var emailMessage = `
+			Name: ${name}
 
-		Email: ${email}
+			Email: ${email}
 
-		Message:
+			Message:
 
-		${message}
+			${message}
 
 
 
-		Sent from Moonlight Swing Orchestra emailer (${websiteEmailAddress})
-		DO NOT REPLY TO THIS EMAIL!
-		REPLY TO ${email}
-	`;
+			Sent from Moonlight Swing Orchestra emailer (${websiteEmailAddress})
+			DO NOT REPLY TO THIS EMAIL!
+			REPLY TO ${email}
+		`;
 
-	var emailSubject = 'Moonlight Swing Website: Message from ' + name;
+		var emailSubject = 'Moonlight Swing Website: Message from ' + name;
 
-	try {
 		var mailer = mailService(emailService, websiteEmailAddress, emailerPassword);
-		await mailer.send(desination, name, emailSubject, emailMessage)
-	}
-	catch(err) {
-		console.error(err)
-	}
+		mailer.send(desination, name, emailSubject, emailMessage)
+		.catch(function(err) {
+			console.error(err);
+			reject(err);
+		});
+		resolve();
+	});
 }
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
