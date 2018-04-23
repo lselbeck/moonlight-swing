@@ -3,7 +3,6 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import MapContainer from './components/MapContainer/MapContainer'
 import ButtonLink from '../../components/ButtonLink/ButtonLink'
 
-import keys from '../../keys'
 import './tabs.css';
 
 export default class Events extends Component {
@@ -91,15 +90,8 @@ export default class Events extends Component {
 
 	async getLatAndLong(address) {
 		try {
-			let response = await fetch(
-				`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${keys.geocodeKey}`,
-				{
-					method: 'GET',
-					mode: 'cors',
-				}
-			)
-			let responseJson = await response.json();
-			return responseJson.results[0].geometry.location
+			let response = await fetch(`/api/coords?address=${address}`, { method: 'GET' })
+			return (await response.json()).coords
 		} catch(e) {
 			console.error(e)
 		}

@@ -1,8 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
+const axios = require('axios');
 const mailService = require('backend-tools').mailService;
-const emailerPassword = require('./keys').emailerPassword;
+const keys = require('./keys');
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -17,13 +18,28 @@ app.get('/', function(req, res) {
   res.sendFile(path.join(BUILD_DIR, 'index.html'));
 });
 
+app.get('/api/coords', function(req, res) {
+	const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${req.query.address}&key=${keys.geocodeKey}`;
+
+	axios
+		.get(url)
+		.then(function(response) {
+			res.send({
+				coords: response.data.results[0].geometry.location
+			});
+		})
+		.catch(error => {
+			console.log(error);
+		})
+});
+
 app.post('/api/email', function(req, res) {
 	doEmail(req.body.name, req.body.email, req.body.message)
 		.then(function() {
 			res.send({ success: true, });
 		})
 		.catch(function(err) {
-			console.error(err)
+			console.error(err);
 		})
 });
 
@@ -52,7 +68,7 @@ function doEmail(name, email, message)
 
 		var emailSubject = 'Moonlight Swing Website: Message from ' + name;
 
-		var mailer = mailService(emailService, websiteEmailAddress, emailerPassword);
+		var mailer = mailService(emailService, websiteEmailAddress, keys.emailerPassword);
 		mailer.send(desination, name, emailSubject, emailMessage)
 		.catch(function(err) {
 			console.error(err);
