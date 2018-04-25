@@ -316,3 +316,9 @@ hr {
 	font-family: 'Semplicita Medium', Arial, Helvetica, sans-serif;
 	background-color: #EAE9E9;
 }
+
+
+/******* ADMIN SECTION *******/
+#admin {
+	padding-top: 7vh;
+}

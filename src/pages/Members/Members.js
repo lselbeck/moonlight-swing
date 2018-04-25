@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './Members.css';
 import BandSectionals from './components/BandSectionals/BandSectionals'
 import Vocalists from './components/Vocalists/Vocalists'
 import ScrollLink from '../../components/ScrollLink/ScrollLink'
