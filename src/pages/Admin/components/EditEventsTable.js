@@ -2,7 +2,7 @@ import React from 'react'
 import ReactTable from 'react-table'
 import "react-table/react-table.css"
 
-const dateStringOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+const dateStringOptions = { year: 'numeric', month: 'numeric', day: 'numeric' };
 
 export default class EditEventsTable extends React.Component {
 	state = {
@@ -64,12 +64,12 @@ export default class EditEventsTable extends React.Component {
 		const columns = [
 			{
 				Header: 'Start Date',
-				accessor: start => start.toLocaleString('en-us', dateStringOptions),
+				accessor: event => event.start.toLocaleString('en-us', dateStringOptions),
 				id: 'start',
 			},
 			{
 				Header: 'End Date',
-				accessor: end => end.toLocaleString('en-us', dateStringOptions),
+				accessor: event => event.end.toLocaleString('en-us', dateStringOptions),
 				id: 'end',
 			},
 			{
