@@ -1,5 +1,8 @@
 import React from 'react'
-import {Button} from 'reactstrap'
+import ReactTable from 'react-table'
+import "react-table/react-table.css"
+
+const dateStringOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 
 export default class EditEventsTable extends React.Component {
 	state = {
@@ -54,14 +57,41 @@ export default class EditEventsTable extends React.Component {
 				address: '276 Sky River Parkway, Monroe, WA, 98272',
 			},
 		],
-		center: undefined,
 	}
 
 	render() {
+		const data = this.state.events
+		const columns = [
+			{
+				Header: 'Start Date',
+				accessor: start => start.toLocaleString('en-us', dateStringOptions),
+				id: 'start',
+			},
+			{
+				Header: 'End Date',
+				accessor: end => end.toLocaleString('en-us', dateStringOptions),
+				id: 'end',
+			},
+			{
+				Header: 'Venue',
+				accessor: 'venue',
+			},
+			{
+				Header: 'Address',
+				accessor: 'address',
+			},
+			{
+				Header: 'Name',
+				accessor: 'name',
+			},
+		]
+
 		return (
-			<table className='table'>
-				
-			</table>
+			<ReactTable 
+				className='table'
+				data={data}
+				columns={columns}
+			/>
 		)
 	}
 }
