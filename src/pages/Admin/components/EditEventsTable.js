@@ -64,13 +64,15 @@ export default class EditEventsTable extends React.Component {
 		const columns = [
 			{
 				Header: 'Start Date',
-				accessor: event => event.start.toLocaleString('en-us', dateStringOptions),
+				accessor: event => event.start,
 				id: 'start',
+				Cell: props => <span>{props.value.toLocaleString('en-us', dateStringOptions)}</span>
 			},
 			{
 				Header: 'End Date',
-				accessor: event => event.end.toLocaleString('en-us', dateStringOptions),
+				accessor: event => event.end,
 				id: 'end',
+				Cell: props => <span>{props.value.toLocaleString('en-us', dateStringOptions)}</span>
 			},
 			{
 				Header: 'Venue',
