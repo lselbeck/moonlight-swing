@@ -16,8 +16,8 @@ const Info = () => (
 						We play for you for whatever the occasion: dances, receptions, fund raisers, private parties,
 						and any other event that calls for great live music.</p>
 						<p>Hear the great sounds of 
-						<strong> Jack Dorsy</strong>,
-						<strong> Glen Miller</strong>,
+						<strong> Tommy Dorsey</strong>,
+						<strong> Glenn Miller</strong>,
 						<strong> Duke Ellington</strong>,
 						<strong> Artie Shaw</strong>, 
 						and more. We even admit to throwing in an occasional modern hit as well! 
