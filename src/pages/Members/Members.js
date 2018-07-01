@@ -109,7 +109,7 @@ export default class Members extends Component {
 						<div className='col-12 col-md-7 col-lg-8'>
 							<p className='members-text mt-4'>
 								<span className='first-word'>M</span>eet Mark Kunz, the leader of the band.  Born and raised in the Seattle area,
-								Mark started his musical career in 1970 with the rock band 'Good Question', later joining the US Army Band as a saxaphonist.
+								Mark started his musical career in 1970 with the rock band 'Good Question', later joining the US Army Band as a saxophonist.
 								He joined Moonlight Swing Orchestra in 2006, becoming the leader of the group in 2010.
 								Focusing on refining the band's sound has been Mark's goal, and the <ScrollLink className='rounded inline-music-link'
 								to='music'>music speaks for itself!</ScrollLink>
