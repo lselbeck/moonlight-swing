@@ -48,7 +48,7 @@ function doEmail(name, email, message)
 {
 	var websiteEmailAddress = 'moonlightswingorchestra4@gmail.com';
 	var emailService = 'Gmail';
-	var desination = 'lselbeck@gmail.com';
+	var desination = 'mark.kunz@comcast.net';
 	var emailSubject = 'Moonlight Swing Website: Message from ' + name;
 	var emailMessage = `
 		Name: ${name}\n

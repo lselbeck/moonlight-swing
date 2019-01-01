@@ -41,7 +41,8 @@ export default class Members extends Component {
 						'Dan Hall',
 						'Debbie Dawson',
 						'Jim Bradbury',
-						'Doug Hodges'
+						'Doug Hodges',
+						'Bob Quindt'
 					]
 				},
 				{
@@ -51,7 +52,8 @@ export default class Members extends Component {
 						'A.J. Johnson',
 						'Jeff Bossart ',
 						'Ed Pearson',
-						'Mel Jackson'
+						'Mel Jackson',
+						'Francisco Grijalva'
 					]
 				},
 				{
@@ -85,6 +87,10 @@ export default class Members extends Component {
 				{
 					img: Placeholder,
 					name: 'Jake Darrow'
+				},
+				{
+					img: Placeholder,
+					name: 'George Lindholm'
 				}
 			]
 		}

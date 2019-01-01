@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import MapContainer from './components/MapContainer/MapContainer'
 import ButtonLink from '../../components/ButtonLink/ButtonLink'
+import { eventData } from './event-data'
 
 import './tabs.css';
 
@@ -107,64 +108,13 @@ export default class Events extends Component {
 		super(props)
 
 		this.state = {
-			events: [
-				{
-					start: new Date(2018, 6-1, 30, 17, 0, 0),
-					end:   new Date(2018, 6-1, 30, 20, 0, 0),
-					venue: 'Monroe Community Senior Center',
-					name: 'Swingin\' to Summer',
-					address: '276 Sky River Parkway, Monroe, WA 98272',
-				},
-				{
-					start: new Date(2018, 11-1, 24, 19, 0, 0),
-					end:   new Date(2018, 11-1, 24, 21, 0, 0),
-					venue: 'Crossroads Bellevue Market Stage',
-					name: '',
-					address: '15600 NE 8th St, Bellevue, WA 98007',
-				},
-				{
-					start: new Date(2018, 7-1, 21, 19, 0, 0),
-					end:   new Date(2018, 7-1, 21, 21, 0, 0),
-					venue: 'Crossroads Bellevue Market Stage',
-					name: '',
-					address: '15600 NE 8th St, Bellevue, WA 98007',
-				},
-				{
-					start: new Date(2018, 8-1, 27, 17, 30, 0),
-					end:   new Date(2018, 8-1, 27, 20, 30, 0),
-					venue: 'Evergreen State Fair Xfinity Courtyard Stage',
-					name: '',
-					address: '14405 179th Ave SE, Monroe, WA 98272',
-				},
-				{
-					start: new Date(2018, 12-1, 8, 13, 0, 0),
-					end:   new Date(2018, 12-1, 8, 15, 30, 0),
-					venue: 'Monroe Community Senior Center',
-					name: 'Swing into Christmas',
-					address: '276 Sky River Parkway, Monroe, WA, 98272',
-				},
-				{
-					start: new Date(2018, 12-1, 31, 18, 30, 0),
-					end:   new Date(2018, 12-1, 31, 21, 30, 0),
-					venue: 'Emerald Heights',
-					name: 'New Years Eve Gala (Private Event)',
-					address: '276 Sky River Parkway, Monroe, WA, 98272',
-				},
-				{
-					start: new Date(2018, 7-1, 14, 19, 30, 0),
-					end:   new Date(2018, 7-1, 14, 21, 30, 0),
-					venue: 'Third Place Commons',
-					name: '',
-					address: '17171 Bothell Way NE, Lake Forest Park, WA 98155',
-				},
-				{
-					start: new Date(2018, 8-1, 11, 19, 0, 0),
-					end:   new Date(2018, 8-1, 11, 21, 0, 0),
-					venue: 'Spee-Bi-Dah',
-					name: 'Private Event',
-					address: 'Spee-Bi-Dah, WA, 98271',
-				},
-			],
+			events: eventData.map(event => { return {
+				venue: event.venue,
+				name: event.name,
+				address: event.address,
+				start: new Date(event.start),
+				end: new Date(event.end)
+			}}),
 			center: undefined,
 		}
 	}
