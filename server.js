@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const axios = require('axios');
-const mailService = require('backend-tools').mailService;
+const MailPromise = require('mail-promise').MailPromise;
 const keys = require('./keys');
 
 const app = express();
@@ -18,29 +18,21 @@ app.get('/', (req, res) => {
 	res.sendFile(path.join(BUILD_DIR, 'index.html'))
 });
 
-app.get('/api/coords', (req, res) => {
+app.get('/api/coords', (req, res, next) => {
 	getCoords(req.query.address)
 		.then(response => res.send(response))
-		.catch(err => console.error(err))
+		.catch(next)
 });
 
 function getCoords(address) {
 	const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${keys.geocodeKey}`;
-	return new Promise((resolve, reject) => {
-		axios
-		.get(url)
-		.then(response => resolve({ coords: response.data.results[0].geometry.location }))
-		.catch(error => {
-			console.log(error);
-			reject(error)
-		});
-	});
+	return axios.get(url).then(response => ({ coords: response.data.results[0].geometry.location }));
 }
 
-app.post('/api/email', (req, res) => {
+app.post('/api/email', (req, res, next) => {
 	doEmail(req.body.name, req.body.email, req.body.message)
 		.then(() => res.send({ success: true, }))
-		.catch(err => console.error(err))
+		.catch(next)
 });
 
 //TODO: get destination from db
@@ -60,15 +52,8 @@ function doEmail(name, email, message)
 		REPLY TO ${email}
 	`;
 
-	return new Promise((resolve, reject) => {
-		var mailer = mailService(emailService, websiteEmailAddress, keys.emailerPassword);
-		mailer.send(desination, name, emailSubject, emailMessage)
-		.then(() => resolve())
-		.catch(err => {
-			console.error(err);
-			reject(err);
-		});
-	});
+	var mailer = new MailPromise(emailService, websiteEmailAddress, keys.emailerPassword);
+	return mailer.send(desination, name, emailSubject, emailMessage)
 }
 
 app.listen(port, () => console.log(`Listening on port ${port}`));

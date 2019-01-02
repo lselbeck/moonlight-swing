@@ -2,9 +2,10 @@
   "name": "moonlight-swing",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://www.moonlightswingorchestra.org/",
   "dependencies": {
     "axios": "^0.18.0",
-    "backend-tools": "^1.0.6",
+    "mail-promise": "^1.2.3",
     "bootstrap": "^4.2.1",
     "express": "^4.16.4",
     "google-map-react": "^1.1.1",
