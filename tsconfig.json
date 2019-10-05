@@ -1,0 +1,19 @@
+{
+    "compileOnSave": false,
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "lib": ["dom", "es2015", "es2017"],
+        "jsx": "preserve",
+        "sourceMap": true,
+        "strict": true,
+        "noEmit": true,
+        "esModuleInterop": true,
+        "noImplicitAny": false,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noFallthroughCasesInSwitch": true,
+        "allowSyntheticDefaultImports": true
+    },
+    "exclude": ["node_modules", "public", ".cache"]
+}

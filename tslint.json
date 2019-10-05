@@ -1,0 +1,22 @@
+{
+    "rulesDirectory": ["tslint-plugin-prettier"],
+    "extends": [
+        "tslint:latest",
+        "tslint-react",
+        "tslint-config-prettier",
+        "tslint-react-hooks"
+    ],
+    "rules": {
+        "prettier": true,
+        "jsx-no-multiline-js": false,
+        "jsx-no-lambda": false,
+        "import-name": false,
+        "no-boolean-literal-compare": false,
+        "quotemark": false,
+        "semicolon": true,
+        "no-submodule-imports": false,
+        "jsx-boolean-value": false,
+        "react-hooks-nesting": "error",
+        "object-literal-sort-keys": false
+    }
+}
