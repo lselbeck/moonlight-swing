@@ -13,9 +13,9 @@
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing \"",
     "lint": "tslint --project ."
-
   },
   "dependencies": {
+    "bootstrap": "^4.3.1",
     "gatsby": "^2.15.29",
     "gatsby-image": "^2.2.24",
     "gatsby-plugin-manifest": "^2.2.20",
@@ -25,16 +25,28 @@
     "gatsby-plugin-typescript": "^2.1.11",
     "gatsby-source-filesystem": "^2.1.29",
     "gatsby-transformer-sharp": "^2.2.20",
+    "google-map-react": "^1.1.5",
+    "immutability-helper": "^3.0.1",
     "prop-types": "^15.7.2",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
-    "react-helmet": "^5.2.1"
+    "react-helmet": "^5.2.1",
+    "react-icons": "^3.7.0",
+    "react-scroll": "^1.7.14",
+    "react-sound": "^1.2.0",
+    "react-tabs": "^3.0.0",
+    "reactstrap": "^8.0.1"
   },
   "devDependencies": {
+    "@types/google-map-react": "^1.1.0",
     "@types/node": "^12.7.11",
     "@types/react": "^16.9.5",
     "@types/react-dom": "^16.9.1",
     "@types/react-helmet": "^5.0.11",
+    "@types/react-scroll": "^1.5.4",
+    "@types/react-sound": "^1.2.1",
+    "@types/react-tabs": "^2.3.1",
+    "@types/reactstrap": "^8.0.4",
     "gatsby-plugin-tslint": "0.0.2",
     "prettier": "^1.18.2",
     "tslint": "^5.20.0",
