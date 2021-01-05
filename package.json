@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "http://www.moonlightswingorchestra.org/",
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "mail-promise": "^1.2.3",
     "bootstrap": "^4.2.1",
     "express": "^4.16.4",
