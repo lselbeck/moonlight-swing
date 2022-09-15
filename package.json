@@ -6,7 +6,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "mail-promise": "^1.2.3",
-    "bootstrap": "^4.2.1",
+    "bootstrap": "^4.3.1",
     "express": "^4.16.4",
     "google-map-react": "^1.1.1",
     "immutability-helper": "^2.9.0",
