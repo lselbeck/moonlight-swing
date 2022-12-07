@@ -7,7 +7,7 @@
     "axios": "^0.18.0",
     "mail-promise": "^1.2.3",
     "bootstrap": "^4.2.1",
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "google-map-react": "^1.1.1",
     "immutability-helper": "^2.9.0",
     "nodemailer": "^4.7.0",
